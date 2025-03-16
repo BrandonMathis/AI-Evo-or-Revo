@@ -1,0 +1,20 @@
+/* QR code styles */
+.layout-qr-code {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  z-index: 1000;
+  background-color: white;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide QR code on mobile devices */
+@media (max-width: 768px) {
+  .layout-qr-code {
+    display: none;
+  }
+}

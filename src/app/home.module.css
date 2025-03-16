@@ -1,0 +1,57 @@
+/* This file defines class names for the Home component */
+
+.container {
+  /* Container for the entire home page */
+}
+
+.main {
+  /* Main content container */
+}
+
+.heading {
+  /* Main heading */
+}
+
+.controlsCard {
+  /* Card for presentation controls */
+}
+
+.cardHeading {
+  /* Heading for cards */
+}
+
+.sectionHeading {
+  /* Heading for sections within cards */
+}
+
+.controlsList {
+  /* List of controls */
+}
+
+.keyboardKey {
+  /* Styling for keyboard keys */
+}
+
+.cardsGrid {
+  /* Grid for cards */
+}
+
+.card {
+  /* Individual card */
+}
+
+.cardText {
+  /* Text within cards */
+}
+
+.startButton {
+  /* Button to start slideshow */
+}
+
+.footer {
+  /* Footer styling */
+}
+
+.footerText {
+  /* Text in footer */
+}

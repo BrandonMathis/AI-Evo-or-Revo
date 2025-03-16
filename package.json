@@ -1,0 +1,44 @@
+{
+  "name": "slideshow",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "dev:ngrok": "concurrently \"next dev\" \"ngrok http --domain=brandonmathis.ngrok.app 3000\"",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "optimize:images": "node scripts/optimizeImagesWithImagemin.js",
+    "copy-and-optimize": "npm run copy-images && npm run optimize:images",
+    "setup": "npm run copy-images && npm run build"
+  },
+  "dependencies": {
+    "next": "15.2.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-qr-code": "^2.0.15",
+    "reveal.js": "^5.1.0",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "browser-sync": "^3.0.3",
+    "concurrently": "^9.1.2",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.2",
+    "imagemin": "^9.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-jpegtran": "^8.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-svgo": "^11.0.1",
+    "imagemin-webp": "^8.0.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

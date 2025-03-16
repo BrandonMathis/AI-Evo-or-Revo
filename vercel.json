@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "name": "historical-computing-slideshow",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "github": {
+    "enabled": true,
+    "silent": true
+  }
+}

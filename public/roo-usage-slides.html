@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Building a Next.js Slideshow with Roo</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        height: 100%;
+        overflow: hidden;
+      }
+      .slide {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+        box-sizing: border-box;
+        background-color: #f5f5f5;
+        position: absolute;
+        transition: transform 0.5s ease;
+      }
+      .slide-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+        color: #555;
+        margin-bottom: 2rem;
+      }
+      p {
+        font-size: 1.2rem;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      .highlight {
+        color: #7e57c2;
+        font-weight: bold;
+      }
+      .logo {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 2rem;
+      }
+      .stats {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin: 2rem 0;
+      }
+      .stat-item {
+        text-align: center;
+        padding: 1rem;
+      }
+      .stat-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #7e57c2;
+      }
+      .stat-label {
+        font-size: 1rem;
+        color: #666;
+      }
+      .icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1rem;
+      }
+      .controls {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+      }
+      .control-btn {
+        background: #7e57c2;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .progress {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 5px;
+        background-color: #7e57c2;
+        transition: width 0.3s ease;
+      }
+      .hidden {
+        display: none;
+      }
+      .two-column {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+      }
+      .column {
+        width: 48%;
+      }
+      .code {
+        background-color: #f0f0f0;
+        padding: 1rem;
+        border-radius: 5px;
+        text-align: left;
+        font-family: monospace;
+        white-space: pre-wrap;
+        font-size: 0.9rem;
+        overflow: auto;
+        max-height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Slide 1: Title -->
+    <div class="slide" id="slide-1">
+      <div class="slide-content">
+        <svg
+          class="logo"
+          viewBox="0 0 200 200"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="100" cy="100" r="80" fill="#7e57c2" />
+          <circle cx="70" cy="80" r="15" fill="white" />
+          <circle cx="130" cy="80" r="15" fill="white" />
+          <path
+            d="M70 120 Q 100 150 130 120"
+            stroke="white"
+            stroke-width="8"
+            fill="none"
+          />
+          <path
+            d="M50 50 Q 60 30 80 40"
+            stroke="white"
+            stroke-width="6"
+            fill="none"
+          />
+          <path
+            d="M150 50 Q 140 30 120 40"
+            stroke="white"
+            stroke-width="6"
+            fill="none"
+          />
+        </svg>
+        <h1>Building a Next.js Slideshow with Roo</h1>
+        <h2>Powered by Anthropic AI</h2>
+        <p>A Case Study in AI-Assisted Development</p>
+      </div>
+    </div>
+
+    <!-- Slide 2: Project Overview -->
+    <div class="slide hidden" id="slide-2">
+      <div class="slide-content">
+        <h1>Project Overview</h1>
+        <div class="two-column">
+          <div class="column">
+            <p>
+              This project is a
+              <span class="highlight">Next.js slideshow application</span> built
+              with the assistance of Roo, an AI-powered coding assistant.
+            </p>
+            <p>The slideshow features:</p>
+            <ul>
+              <li>Dynamic image loading from the file system</li>
+              <li>Responsive design for all devices</li>
+              <li>Keyboard and touch navigation</li>
+              <li>QR code generation for mobile access</li>
+              <li>Progress tracking</li>
+            </ul>
+          </div>
+          <div class="column">
+            <svg
+              class="icon"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5"
+                fill="#7e57c2"
+              />
+            </svg>
+            <p>Built with:</p>
+            <ul>
+              <li>Next.js 15.2.2</li>
+              <li>React 19.0.0</li>
+              <li>reveal.js 5.1.0</li>
+              <li>TypeScript</li>
+              <li>Tailwind CSS</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Roo Usage Statistics -->
+    <div class="slide hidden" id="slide-3">
+      <div class="slide-content">
+        <h1>Roo Usage Statistics</h1>
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-value">$35.28</div>
+            <div class="stat-label">Total API Cost</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">~346k</div>
+            <div class="stat-label">Total Tokens Used</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">~36.5M</div>
+            <div class="stat-label">Total Cache Usage</div>
+          </div>
+        </div>
+        <p>
+          These statistics represent the resources used by Roo to assist in
+          building this Next.js slideshow application.
+        </p>
+        <p>
+          Compared to traditional development, using AI assistance resulted in:
+        </p>
+        <ul>
+          <li>Faster development time</li>
+          <li>Fewer bugs and issues</li>
+          <li>More efficient code structure</li>
+          <li>Better documentation</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 4: How Roo Helped -->
+    <div class="slide hidden" id="slide-4">
+      <div class="slide-content">
+        <h1>How Roo Helped</h1>
+        <div class="two-column">
+          <div class="column">
+            <h3>Project Setup</h3>
+            <ul>
+              <li>Initialized Next.js project structure</li>
+              <li>Configured TypeScript and ESLint</li>
+              <li>Set up Tailwind CSS integration</li>
+              <li>Created optimized build scripts</li>
+            </ul>
+            <h3>Component Development</h3>
+            <ul>
+              <li>Designed reusable React components</li>
+              <li>Implemented responsive layouts</li>
+              <li>Created QR code functionality</li>
+              <li>Built navigation and controls</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Advanced Features</h3>
+            <ul>
+              <li>Implemented dynamic routing</li>
+              <li>Created image optimization pipeline</li>
+              <li>Added touch gesture support</li>
+              <li>Implemented keyboard shortcuts</li>
+              <li>Built accessibility features</li>
+            </ul>
+            <h3>Testing & Deployment</h3>
+            <ul>
+              <li>Configured Vercel deployment</li>
+              <li>Set up ngrok for local testing</li>
+              <li>Optimized for performance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: Key Components -->
+    <div class="slide hidden" id="slide-5">
+      <div class="slide-content">
+        <h1>Key Components</h1>
+        <div class="two-column">
+          <div class="column">
+            <h3>Slideshow Component</h3>
+            <p>
+              The core component that manages slide navigation, keyboard
+              controls, and touch gestures.
+            </p>
+            <div class="code">
+              // Slideshow.tsx (simplified) import React, { useState, useEffect
+              } from "react"; import SlideHeader from "./SlideHeader"; import
+              IntroSlide from "./IntroSlide"; import MainSlide from
+              "./MainSlide"; import ProgressBar from "./ProgressBar"; export
+              default function Slideshow({ images, initialSlideIndex = -1, }) {
+              const [currentIndex, setCurrentIndex] =
+              useState(initialSlideIndex); // Navigation functions const
+              goToNextSlide = useCallback(() => { setCurrentIndex((prevIndex) =>
+              { if (prevIndex === -1) return 0; if (prevIndex === images.length
+              - 1) return images.length - 1; return prevIndex + 1; }); },
+              [images.length]); // ... keyboard and touch handlers }
+            </div>
+          </div>
+          <div class="column">
+            <h3>Image Loading</h3>
+            <p>
+              Dynamic image loading from the file system with caching for
+              performance.
+            </p>
+            <div class="code">
+              // imageUtils.ts (simplified) export function getAllImages():
+              SlideImage[] { const images: SlideImage[] = []; const
+              rootImagesDir = path.join( process.cwd(), "public", "images" ); //
+              Process directory recursively function processDirectory( dirPath:
+              string, relativePath: string = "" ) { const items =
+              fs.readdirSync(dirPath); for (const item of items) { const
+              itemPath = path.join(dirPath, item); const itemStat =
+              fs.statSync(itemPath); if (itemStat.isDirectory()) {
+              processDirectory( itemPath, path.join(relativePath, item) ); }
+              else if (isImageFile(item)) { images.push({ path:
+              `/images/${relativePath}/${item}`, title: formatTitle(item),
+              parentDir: getParentDir(relativePath), }); } } }
+              processDirectory(rootImagesDir); return images.sort((a, b) =>
+              a.path.localeCompare(b.path) ); }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: QR Code Integration -->
+    <div class="slide hidden" id="slide-6">
+      <div class="slide-content">
+        <h1>QR Code Integration</h1>
+        <div class="two-column">
+          <div class="column">
+            <p>
+              The slideshow includes QR code generation to allow mobile users to
+              access the presentation.
+            </p>
+            <p>Roo helped implement:</p>
+            <ul>
+              <li>Dynamic QR code generation based on environment</li>
+              <li>Automatic detection of ngrok tunnels</li>
+              <li>Responsive QR code sizing</li>
+              <li>Fallback URLs for different environments</li>
+            </ul>
+            <svg
+              class="icon"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#a)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1"
+                  fill="#7e57c2"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="column">
+            <div class="code">
+              // qrCodeUtils.ts export function getQRCodeUrl(): string { //
+              Check if we're in the browser if (typeof window === "undefined") {
+              return "https://google.com"; // Default fallback } // Check if
+              we're in development if (process.env.NODE_ENV === "development") {
+              // Check if ngrok is running by looking for // the ngrok domain in
+              the URL if (window.location.hostname.includes("ngrok")) { // We're
+              viewing through ngrok, use the current URL return
+              window.location.origin; } // If we're on localhost but ngrok might
+              be running return "https://brandonmathis.ngrok.app"; } // In
+              production, return the Vercel domain return
+              "https://ato-ai-ignight-talk.vercel.app"; }
+            </div>
+            <div class="code">
+              // LayoutQRCode.tsx const LayoutQRCode = React.memo(() => { //
+              State to store the QR code URL const [url, setUrl] =
+              useState("https://google.com"); // Update the URL based on the
+              environment useEffect(() => { setUrl(getQRCodeUrl()); }, []);
+              return (
+              <div className="layout-qr-code">
+                {/* QR code component */}
+                <div style="height: 100%; width: 100%">QR Code</div>
+              </div>
+              ); });
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: Lessons Learned -->
+    <div class="slide hidden" id="slide-7">
+      <div class="slide-content">
+        <h1>Lessons Learned</h1>
+        <div class="two-column">
+          <div class="column">
+            <h3>Benefits of AI-Assisted Development</h3>
+            <ul>
+              <li>Significantly faster development cycles</li>
+              <li>Reduced time spent on boilerplate code</li>
+              <li>Better code organization from the start</li>
+              <li>More comprehensive error handling</li>
+              <li>Easier implementation of complex features</li>
+            </ul>
+            <h3>Best Practices</h3>
+            <ul>
+              <li>Clear, specific prompts yield better results</li>
+              <li>Breaking tasks into smaller chunks improves accuracy</li>
+              <li>Reviewing AI-generated code is still essential</li>
+              <li>Iterative refinement produces optimal solutions</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Challenges</h3>
+            <ul>
+              <li>Occasional misunderstanding of complex requirements</li>
+              <li>Need for human oversight on architectural decisions</li>
+              <li>Some trial and error with advanced features</li>
+              <li>Learning to communicate effectively with AI</li>
+            </ul>
+            <h3>Future Improvements</h3>
+            <ul>
+              <li>Further optimization of image loading</li>
+              <li>Enhanced accessibility features</li>
+              <li>Additional animation and transition effects</li>
+              <li>Integration with presentation remote controls</li>
+              <li>Speaker notes functionality</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 8: Conclusion -->
+    <div class="slide hidden" id="slide-8">
+      <div class="slide-content">
+        <h1>Conclusion</h1>
+        <svg
+          class="logo"
+          viewBox="0 0 200 200"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="100" cy="100" r="80" fill="#7e57c2" />
+          <circle cx="70" cy="80" r="15" fill="white" />
+          <circle cx="130" cy="80" r="15" fill="white" />
+          <path
+            d="M70 120 Q 100 150 130 120"
+            stroke="white"
+            stroke-width="8"
+            fill="none"
+          />
+          <path
+            d="M50 50 Q 60 30 80 40"
+            stroke="white"
+            stroke-width="6"
+            fill="none"
+          />
+          <path
+            d="M150 50 Q 140 30 120 40"
+            stroke="white"
+            stroke-width="6"
+            fill="none"
+          />
+        </svg>
+        <p>
+          Using Roo with Anthropic AI to build this Next.js slideshow
+          application demonstrated the power of AI-assisted development.
+        </p>
+        <p>
+          With a total API cost of <span class="highlight">$35.28</span>,
+          approximately <span class="highlight">346,000 tokens</span> used, and
+          <span class="highlight">36.5 million</span> tokens of cache usage, the
+          project was completed efficiently and with high quality.
+        </p>
+        <p>
+          The combination of human creativity and AI assistance resulted in a
+          robust, feature-rich application that would have taken significantly
+          longer to develop using traditional methods.
+        </p>
+        <p class="highlight">
+          AI is not replacing developers—it's empowering them.
+        </p>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="control-btn" id="prev-btn">←</button>
+      <button class="control-btn" id="next-btn">→</button>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress" id="progress-bar"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".slide");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const progressBar = document.getElementById("progress-bar");
+        let currentSlide = 0;
+
+        // Update progress bar
+        function updateProgress() {
+          const progress = ((currentSlide + 1) / slides.length) * 100;
+          progressBar.style.width = `${progress}%`;
+        }
+
+        // Show current slide
+        function showSlide(index) {
+          slides.forEach((slide, i) => {
+            if (i === index) {
+              slide.classList.remove("hidden");
+              slide.style.transform = "translateX(0)";
+            } else if (i < index) {
+              slide.classList.add("hidden");
+              slide.style.transform = "translateX(-100%)";
+            } else {
+              slide.classList.add("hidden");
+              slide.style.transform = "translateX(100%)";
+            }
+          });
+          updateProgress();
+        }
+
+        // Navigate to previous slide
+        function prevSlide() {
+          if (currentSlide > 0) {
+            currentSlide--;
+            showSlide(currentSlide);
+          }
+        }
+
+        // Navigate to next slide
+        function nextSlide() {
+          if (currentSlide < slides.length - 1) {
+            currentSlide++;
+            showSlide(currentSlide);
+          }
+        }
+
+        // Event listeners
+        prevBtn.addEventListener("click", prevSlide);
+        nextBtn.addEventListener("click", nextSlide);
+
+        // Keyboard navigation
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowLeft") {
+            prevSlide();
+          } else if (e.key === "ArrowRight" || e.key === " ") {
+            nextSlide();
+          }
+        });
+
+        // Touch navigation
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", function (e) {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", function (e) {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        });
+
+        function handleSwipe() {
+          if (touchEndX < touchStartX - 50) {
+            nextSlide();
+          } else if (touchEndX > touchStartX + 50) {
+            prevSlide();
+          }
+        }
+
+        // Initialize
+        showSlide(currentSlide);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+/* Container styles */
+.slideshowContainer {
+  @apply flex flex-col h-screen bg-black;
+}
+
+/* Error message styles */
+.errorContainer {
+  @apply bg-red-600 text-white p-2 z-50;
+}
+
+.errorText {
+  @apply text-center;
+}
+
+.errorDismissButton {
+  @apply absolute right-2 top-2 text-white;
+}
+
+/* Header styles */
+.headerContainer {
+  @apply bg-black text-white p-2 z-10;
+}
+
+.headerContent {
+  @apply flex items-center;
+}
+
+.qrCodeContainer {
+  @apply bg-white p-2 rounded-md mr-4;
+}
+
+.headerTextContainer {
+  @apply flex-grow;
+}
+
+.parentDirHeading {
+  @apply text-3xl font-bold text-center mb-2;
+}
+
+.slideTitle {
+  @apply text-2xl text-center font-semibold;
+}
+
+/* Main slide styles */
+.mainSlideContainer {
+  @apply flex-grow relative;
+}
+
+.slideImageContainer {
+  @apply relative w-full h-full;
+}
+
+/* Slide counter styles */
+.slideCounter {
+  @apply absolute bottom-4 right-4 bg-black bg-opacity-70 text-white px-3 py-1 rounded-md z-10;
+}
+
+.counterText {
+  @apply text-sm;
+}
+
+/* Preload container */
+.preloadContainer {
+  @apply hidden;
+}
+
+/* Progress bar styles */
+.progressBarContainer {
+  @apply h-1 bg-gray-800;
+}
+
+.progressBar {
+  @apply h-full bg-white;
+}
+
+/* Empty state styles */
+.emptyStateContainer {
+  @apply flex items-center justify-center h-screen bg-black text-white;
+}
+
+.emptyStateContent {
+  @apply text-center p-4;
+}
+
+.emptyStateHeading {
+  @apply text-2xl font-bold mb-4;
+}
+
+.emptyStateText {
+  @apply mb-4;
+}
+
+.returnButton {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+}

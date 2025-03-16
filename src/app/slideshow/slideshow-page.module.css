@@ -1,0 +1,13 @@
+/* This file defines class names for the SlideshowPage component */
+
+.loadingContainer {
+  /* Container for the loading state */
+}
+
+.loadingContent {
+  /* Content within the loading container */
+}
+
+.loadingHeading {
+  /* Heading for the loading state */
+}
