@@ -26,8 +26,8 @@ const MainSlide = React.memo(function MainSlide({
           src={imagePath}
           alt={imageAlt}
           style={{
+            maxWidth: '90vw',
             position: "absolute",
-            width: "100%",
             height: "100%",
             objectFit: "contain",
           }}
