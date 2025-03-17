@@ -158,10 +158,12 @@ export default function Slideshow({
       switch (e.key) {
         case "ArrowRight":
         case " ": // Space bar
+        case"PageDown":
           e.preventDefault(); // Prevent page scrolling on space
           goToNextSlide();
           break;
         case "ArrowLeft":
+        case"PageUp":
           e.preventDefault();
           goToPrevSlide();
           break;
