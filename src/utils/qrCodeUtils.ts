@@ -24,5 +24,5 @@ export function getQRCodeUrl(): string {
   }
 
   // In production, return the Vercel domain
-  return "https://ato-ai-ignight-talk.vercel.app";
+  return "https://linktr.ee/bmath515";
 }
