@@ -90,23 +90,6 @@ The project is built with Next.js and uses the following key components:
 
 The slideshow supports keyboard and touch navigation, allowing users to navigate between slides using arrow keys, spacebar, Page Up/Down, Escape, Home, End keys, and swipe gestures on mobile devices. It optimizes image loading by preloading the next and previous slides' images for smoother transitions.
 
-## History of Programming
-
-This slideshow covers the history of programming over the past 80 years, starting from the era of the ENIAC. It showcases the evolution of computing from electromechanical devices to modern AI-powered systems.
-
-Here are a few key milestones highlighted in the slideshow:
-
-- **Tabulating Machine (1890s):** ![Tabulating Machine](public/images/01 tabulating machine (1890s)/image.jpg) - Early mechanical devices used for data processing.
-- **Electromechanical Computers (1920s):** ![Electromechanical Computers](public/images/02 Electromechanical Computers (1920s)/image.jpg) - The transition from mechanical to electrical computing.
-- **Vacuum Tube Digital Computers (1940s):** ![Vacuum Tube Digital Computers](public/images/03 Vacuum Tube Digital Computers (1940s)/image.jpg) - The dawn of electronic digital computing.
-- **Programming Computers (1950s):** ![Programming Computers](public/images/04 Programming Computers (1950s)/image.jpg) - The development of early programming languages and techniques.
-- **Transistor Digital Computers (1950s):** ![Transistor Digital Computers](public/images/06 Transistor Digital Computers (1950s)/image.jpg) - The introduction of transistors, leading to smaller and more efficient computers.
-- **Interactive Systems (1960s):** ![Interactive Systems](public/images/07 Interactive Systems (1960s)/image.jpg) - The emergence of interactive computing and time-sharing systems.
-- **Personal Computing (1970s):** ![Personal Computing](public/images/09 Personal Computing (1970s)/image.jpg) - The rise of personal computers and the democratization of computing.
-- **GUIs (1980s):** ![GUIs](public/images/11 GUIs (1980s)/image.jpg) - The introduction of graphical user interfaces, making computers more accessible to non-technical users.
-- **Information Era (2000s):** ![Information Era](public/images/14 Information Era (2000s)/image.jpg) - The explosion of the internet and the rise of the information age.
-- **Cloud & AI Era (2010):** ![Cloud & AI Era](public/images/15 Cloud & AI Era (2010)/image.jpg) - The current era of cloud computing and artificial intelligence.
-
 ## Token & API Cost Summary
 
 Total Tokens Used: 413,000
