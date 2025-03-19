@@ -1,5 +1,7 @@
 # AI Evolution or Revolution Slideshow
 
+[See Live on Vercel](https://ato-ai-ignight-talk.vercel.app/)
+
 A set of slides for a talk Brandon Mathis gave at allthingsopen.ai. The images in `public/images` were collected by hand but this codebase was generated entirely via "Vibe Coding" with VS Code ([https://code.visualstudio.com/](https://code.visualstudio.com/)), Anthropic ([https://www.anthropic.com/](https://www.anthropic.com/)) and Roo. It is built in Next.js and deployed on Vercel. It was used as a slideshow presentation tool and supports desktop and well as mobile with complex gestures for navigating through slides. It optimizes images and loads only the slide's image you are looking at as well as the next slide upcoming for optimized scrolling. This project was entirely coded by AI under the direction of a software engineer (Brandon Mathis).
 
 ## Features
