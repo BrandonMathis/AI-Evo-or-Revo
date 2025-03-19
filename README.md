@@ -1,12 +1,33 @@
 # AI Evolution or Revolution Slideshow
 
-A slideshow application built with Next.js that explores the evolution and revolution of AI in software development.
+A set of slides for a talk Brandon Mathis gave at allthingsopen.ai. The images in `public/images` were collected by hand but this codebase was generated entirely via "Vibe Coding" with VS Code ([https://code.visualstudio.com/](https://code.visualstudio.com/)), Anthropic ([https://www.anthropic.com/](https://www.anthropic.com/)) and Roo. It is built in Next.js and deployed on Vercel. It was used as a slideshow presentation tool and supports desktop and well as mobile with complex gestures for navigating through slides. It optimizes images and loads only the slide's image you are looking at as well as the next slide upcoming for optimized scrolling. This project was entirely coded by AI under the direction of a software engineer (Brandon Mathis).
 
 ## Features
 
 - Responsive slideshow with keyboard and touch navigation
 - QR code that adapts to development and production environments
 - Mobile-friendly design
+- Optimized image loading for smooth scrolling
+
+## Installation
+
+1.  Clone the repository:
+
+    ```bash
+    git clone <repository_url>
+    ```
+
+2.  Navigate to the project directory:
+
+    ```bash
+    cd AI-Evo-or-Revo
+    ```
+
+3.  Install dependencies:
+
+    ```bash
+    npm install
+    ```
 
 ## Development
 
@@ -51,3 +72,61 @@ The QR code in the top-right corner of the slideshow adapts based on the environ
 The QR code is automatically hidden on mobile devices (screen width less than 768px) since it's not needed when already viewing on a mobile device.
 
 This makes it easy to share the slideshow with others, whether you're developing locally or have deployed to production.
+
+## Vibe Coding Details
+
+This project was generated entirely via "Vibe Coding" with VS Code, Anthropic, and Roo. Vibe Coding is a methodology where a software engineer directs AI to generate code through iterative prompting and refinement. This project showcases the potential of AI in software development when guided by human expertise.
+
+Roo ([https://www.roovet.com/](https://www.roovet.com/)) is an AI assistant that was instrumental in the development of this project.
+
+## Technical Details
+
+The project is built with Next.js and uses the following key components:
+
+- **`src/app/page.tsx`:** This is the main page of the application, which redirects to the intro slide (`/slides/intro`).
+- **`src/components/Slideshow.tsx`:** This component handles the slideshow functionality, including state management, navigation, keyboard controls, touch events, image preloading, accessibility, and error handling. It uses `useState` to manage the current slide index and `window.history.pushState` to update the browser history.
+- **`src/utils/imageUtils.ts`:** This utility file contains the `getAllImages()` function, which recursively reads the `public/images` directory and its subdirectories to find all image files. It extracts the image title from the filename and the parent directory name from the directory structure.
+- **`src/app/api/images/route.ts`:** This file defines an API endpoint (`/api/images`) that returns a list of all images in the `public/images` directory. It uses the `getAllImages()` function from `src/utils/imageUtils.ts` to get the list of images.
+
+The slideshow supports keyboard and touch navigation, allowing users to navigate between slides using arrow keys, spacebar, Page Up/Down, Escape, Home, End keys, and swipe gestures on mobile devices. It optimizes image loading by preloading the next and previous slides' images for smoother transitions.
+
+## History of Programming
+
+This slideshow covers the history of programming over the past 80 years, starting from the era of the ENIAC. It showcases the evolution of computing from electromechanical devices to modern AI-powered systems.
+
+Here are a few key milestones highlighted in the slideshow:
+
+- **Tabulating Machine (1890s):** ![Tabulating Machine](public/images/01 tabulating machine (1890s)/image.jpg) - Early mechanical devices used for data processing.
+- **Electromechanical Computers (1920s):** ![Electromechanical Computers](public/images/02 Electromechanical Computers (1920s)/image.jpg) - The transition from mechanical to electrical computing.
+- **Vacuum Tube Digital Computers (1940s):** ![Vacuum Tube Digital Computers](public/images/03 Vacuum Tube Digital Computers (1940s)/image.jpg) - The dawn of electronic digital computing.
+- **Programming Computers (1950s):** ![Programming Computers](public/images/04 Programming Computers (1950s)/image.jpg) - The development of early programming languages and techniques.
+- **Transistor Digital Computers (1950s):** ![Transistor Digital Computers](public/images/06 Transistor Digital Computers (1950s)/image.jpg) - The introduction of transistors, leading to smaller and more efficient computers.
+- **Interactive Systems (1960s):** ![Interactive Systems](public/images/07 Interactive Systems (1960s)/image.jpg) - The emergence of interactive computing and time-sharing systems.
+- **Personal Computing (1970s):** ![Personal Computing](public/images/09 Personal Computing (1970s)/image.jpg) - The rise of personal computers and the democratization of computing.
+- **GUIs (1980s):** ![GUIs](public/images/11 GUIs (1980s)/image.jpg) - The introduction of graphical user interfaces, making computers more accessible to non-technical users.
+- **Information Era (2000s):** ![Information Era](public/images/14 Information Era (2000s)/image.jpg) - The explosion of the internet and the rise of the information age.
+- **Cloud & AI Era (2010):** ![Cloud & AI Era](public/images/15 Cloud & AI Era (2010)/image.jpg) - The current era of cloud computing and artificial intelligence.
+
+## Token & API Cost Summary
+
+Total Tokens Used: 413,000
+Total Cached Tokens: 3,185,800
+Total API Cost: $44.52
+
+### Potential Climate Impact
+
+Using the estimate of 0.3 kg CO₂ per $1 spent:
+
+Total CO₂ Emission: ~13.36 kg CO₂
+(Equivalent to driving ~36 miles in a gasoline car.)
+
+## AI Prompting Guides for Software Engineers
+
+Here are some useful resources for software engineers who want to learn how to effectively prompt AI models for code generation:
+
+- [OpenAI Cookbook](https://github.com/openai/openai-cookbook): Examples and guides for using OpenAI APIs.
+- [Prompt Engineering Guide](https://www.promptingguide.ai/): A comprehensive guide to prompt engineering techniques.
+
+---
+
+_This README.md file was also generated by AI._
