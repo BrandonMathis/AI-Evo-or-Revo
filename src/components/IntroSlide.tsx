@@ -66,6 +66,11 @@ const IntroSlide = React.memo(function IntroSlide({
             This Dot Labs
           </a>
         </p>
+        <p className="intro-author">
+          <a href="https://github.com/BrandonMathis/AI-Evo-or-Revo" style={{ textDecoration: "underline", fontSize: '0.75em' }}>
+            View slide-deck code on Github
+          </a>
+        </p>
 
         {/* Mobile navigation modal */}
         {isMobile && showMobileModal && (
